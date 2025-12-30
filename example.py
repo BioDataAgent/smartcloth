@@ -1,7 +1,33 @@
 """
 智能穿衣助理使用示例
+
+注意：
+1. 此文件需要在项目根目录下运行
+2. 使用前需要设置 Google API Key 环境变量
+3. 可以通过以下方式设置：
+   export GOOGLE_API_KEY="your-api-key-here"
+   或者在代码中设置：os.environ["GOOGLE_API_KEY"] = "your-api-key-here"
 """
-from my_agent01.agent import clothing_assistant, query_with_logging
+import os
+import sys
+from pathlib import Path
+
+# 检查环境变量
+if not os.getenv("GOOGLE_API_KEY"):
+    print("⚠️  警告：未检测到 GOOGLE_API_KEY 环境变量")
+    print("请先设置 Google API Key：")
+    print("  export GOOGLE_API_KEY='your-api-key-here'")
+    print("或者取消下面代码的注释并填入你的 API Key：")
+    print("  os.environ['GOOGLE_API_KEY'] = 'your-api-key-here'")
+    print()
+    # 如果需要，可以在这里直接设置（不推荐提交到 Git）
+    # os.environ["GOOGLE_API_KEY"] = "your-api-key-here"
+
+# 添加当前目录到 Python 路径，以便导入模块
+current_dir = Path(__file__).parent
+sys.path.insert(0, str(current_dir))
+
+from agent import clothing_assistant, query_with_logging
 
 
 def main():

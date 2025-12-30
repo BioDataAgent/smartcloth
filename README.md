@@ -18,16 +18,49 @@
 
 ## 🚀 快速开始
 
-### 安装依赖
+### 前置要求
+
+1. **安装 Google ADK**：本项目基于 **Google ADK (Agent Development Kit)**，需要先安装 ADK。请参考 [Google ADK 官方文档](https://github.com/google/adk) 进行安装。
+
+2. **配置 Google API Key**：需要设置环境变量 `GOOGLE_API_KEY`
+
+### 安装和配置
 
 ```bash
+# 1. 安装 Python 依赖
 pip install -r requirements.txt
+
+# 2. 设置 Google API Key 环境变量
+export GOOGLE_API_KEY="your-google-api-key-here"
+
+# 或者添加到 ~/.bashrc 或 ~/.zshrc 中永久设置
+echo 'export GOOGLE_API_KEY="your-google-api-key-here"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
-### 使用示例
+**获取 Google API Key：**
+- 访问 [Google AI Studio](https://makersuite.google.com/app/apikey)
+- 创建新的 API Key
+- 复制并设置到环境变量中
+
+### 使用方式
+
+#### 方式 1：直接运行示例文件（推荐）
+
+```bash
+# 在项目根目录下运行
+python example.py
+```
+
+#### 方式 2：在代码中使用
 
 ```python
-from my_agent01.agent import clothing_assistant, query_with_logging
+# 方式 A：如果项目在 Python 路径中
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from agent import clothing_assistant, query_with_logging
 
 # 使用带日志的查询函数（推荐）
 response = query_with_logging(clothing_assistant, "北京后天天气")
@@ -36,10 +69,15 @@ response = query_with_logging(clothing_assistant, "北京后天天气")
 response = clothing_assistant.query("上海明天")
 ```
 
-也可以运行示例文件：
+#### 方式 3：作为包使用
 
-```bash
-python example.py
+如果要将项目作为包使用，需要将项目目录添加到 Python 路径：
+
+```python
+import sys
+sys.path.insert(0, '/path/to/smartcloth')
+
+from agent import clothing_assistant, query_with_logging
 ```
 
 ## 📁 项目结构

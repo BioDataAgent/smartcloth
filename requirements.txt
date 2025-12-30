@@ -1,1 +1,5 @@
 requests>=2.31.0
+
+# 注意：本项目还需要 Google ADK (Agent Development Kit)
+# 请参考 Google ADK 官方文档进行安装：
+# https://github.com/google/adk
