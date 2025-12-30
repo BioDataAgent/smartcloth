@@ -45,19 +45,13 @@ source ~/.zshrc
 
 ### 使用方式
 
-#### 方式 1：直接运行示例文件（推荐）
-
-```bash
-# 在项目根目录下运行
-python example.py
-```
-
-#### 方式 2：在代码中使用
+在代码中使用：
 
 ```python
-# 方式 A：如果项目在 Python 路径中
 import sys
 from pathlib import Path
+
+# 添加项目目录到 Python 路径
 sys.path.insert(0, str(Path(__file__).parent))
 
 from agent import clothing_assistant, query_with_logging
@@ -65,30 +59,18 @@ from agent import clothing_assistant, query_with_logging
 # 使用带日志的查询函数（推荐）
 response = query_with_logging(clothing_assistant, "北京后天天气")
 
-# 或直接使用智能体
-response = clothing_assistant.query("上海明天")
-```
-
-#### 方式 3：作为包使用
-
-如果要将项目作为包使用，需要将项目目录添加到 Python 路径：
-
-```python
-import sys
-sys.path.insert(0, '/path/to/smartcloth')
-
-from agent import clothing_assistant, query_with_logging
+# 或直接使用智能体（注意：需要根据 Google ADK 的实际 API 调用方法）
+# response = clothing_assistant.run("上海明天")  # 或其他方法名
 ```
 
 ## 📁 项目结构
 
 ```
-my_agent01/
+smartcloth/
 ├── __init__.py          # 包初始化文件
 ├── agent.py             # 智能体配置和指令
 ├── tools.py             # 工具函数（天气获取、体感计算、穿衣匹配）
 ├── requirements.txt     # 项目依赖
-├── example.py           # 使用示例
 ├── LICENSE              # MIT 许可证
 ├── README.md            # 项目说明文档
 └── .gitignore           # Git 忽略文件
