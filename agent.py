@@ -1,5 +1,12 @@
 from google.adk.agents.llm_agent import Agent
-from .tools import Get_Weather, Calc_RealFeel, Match_Clothing
+
+# 支持相对导入和绝对导入两种方式
+try:
+    # 作为包的一部分时使用相对导入
+    from .tools import Get_Weather, Calc_RealFeel, Match_Clothing
+except ImportError:
+    # 直接导入时使用绝对导入
+    from tools import Get_Weather, Calc_RealFeel, Match_Clothing
 
 
 def log_agent_thought(user_query: str):
